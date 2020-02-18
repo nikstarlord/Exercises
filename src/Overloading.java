@@ -21,7 +21,7 @@ public class Overloading {
         Overloading ovr=new Overloading();
         System.out.println(ovr.add(5,6));
         System.out.println(ovr.add(5.4,6.5));
-        System.out.println(ovr.mul(2,4));
+        System.out.println(ovr.mul((float)2,(float) 4));
         System.out.println(ovr.mul(5,6));
         System.out.println(ovr.fun("Nikhil","Sharma"));
         System.out.println(ovr.fun("Nikhil","Sharma","Is"));

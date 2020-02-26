@@ -2,7 +2,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-class Proce implements Runnable{
+/*class Proce implements Runnable{
 
     @Override
     public void run() {
@@ -43,14 +43,40 @@ class Proc implements Runnable{
                 }
             }
     }
-}
+}*/
 
 
 public class ThreadPool {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
-        executor.submit(new Proc());
-        executor.submit(new Proce());
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Even Numbers....");
+                for(int i=0;i<20;i+=2){
+                    System.out.println(Thread.currentThread().getName()+" value:"+i);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Odd Numbers...");
+                for(int i=1;i<20;i+=2){
+                    System.out.println(Thread.currentThread().getName()+" value:"+i);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
         executor.shutdown();
 
         try {

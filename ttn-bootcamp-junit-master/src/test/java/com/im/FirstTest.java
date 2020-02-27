@@ -4,6 +4,9 @@ package com.im;
 import junit.runner.Version;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.runners.Parameterized;
 
 import java.math.BigDecimal;
@@ -46,12 +49,12 @@ public class FirstTest {
 
     //@ParameterizedTest
     //@ValueSource(String ={"Nitin","Nikhil","Mahak"})
-    @Test
-    void check_for_palindrome(){
-        String str = "Nikhil";
-        boolean expected = false;
+    @ParameterizedTest
+    @CsvSource(value={"Nikhil","Nitin","Nikina"})
+    void check_for_palindrome(String  val){
+        String str = val;
         boolean actual = new First().isPallindrome(str);
-        assertEquals(expected,actual);
+        assertFalse(actual);
         //System.out.println("JUnit version is: " + Version.id());
     }
 
